@@ -9,3 +9,4 @@
 
 - Após a execução do script você terá um novo diretório chamado de **resultados**.
 - O diretório **resultados** contém arquivos *.dat com todos os processos ONL calculados.
+- O script foi executado em um ambiente Ubuntu 20.04.2 LTS, com python 3.8.5 e numpy 1.20.1.
