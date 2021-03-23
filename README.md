@@ -5,7 +5,7 @@
 - Adicione seus arquivos *.log.
 - Execute o script: 
 
-> processa_ONL.py
+    > processa_ONL.py
 
-- Após a execução do script você terá um novo diretório chamado de resultados com arquivos *.dat com
-todos os processos ONL calculados.
+- Após a execução do script você terá um novo diretório chamado de **resultados**.
+- O diretório **resultados** contém arquivos *.dat com todos os processos ONL calculados.
