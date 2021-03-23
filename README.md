@@ -1,7 +1,11 @@
 # ONL
 
-- Os scripts deste repositório extraem dados ONL de um arquivo *.log do gaussian.
+- Os scripts deste repositório extraem dados ONL de um conjunto de arquivos *.log do gaussian.
+- Para extrair os dados de interesse apague todos os arquivos *.log que já existem neste repositório.
+- Adicione seus arquivos *.log.
+- Execute o script: 
 
-- Para calcular os processos de interesse basta executar o arquivo: 
+> processa_ONL.py
 
-        > processa_ONL.py
+- Após a execução do script você terá um novo diretório chamado de resultados com arquivos *.dat com
+todos os processos ONL calculados.
