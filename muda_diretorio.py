@@ -4,12 +4,11 @@ import re
 class MudaDiretorio:
 
     def __init__(self, PATH):
-
         lista_dados = os.listdir(PATH)
 
         #print(lista_dados)
 
-        conta_processos = 0
+        dic_todos_processos = {}
         dic_alfa_estatico = {}
         dic_alfa_dinamico = {}
         dic_beta_estatico = {}
@@ -41,48 +40,91 @@ class MudaDiretorio:
             #print(padrao_gama_dinamico_2www0.findall(arq))
 
             if padrao_alfa_estatico.findall(arq)[0][0]:
+               #print(padrao_alfa_estatico.findall(arq)[0][0])
                valor_alfa_estatico = padrao_alfa_estatico.findall(arq)[0][2]
                dic_alfa_estatico[metodo] = float(valor_alfa_estatico)
+               dic_todos_processos[padrao_alfa_estatico.findall(arq)[0][0]] = dic_alfa_estatico
+
             if padrao_alfa_dinamico.findall(arq)[0][0]:
                valor_alfa_dinamico = padrao_alfa_dinamico.findall(arq)[0][2]
                dic_alfa_dinamico[metodo] = float(valor_alfa_dinamico)
+               dic_todos_processos[padrao_alfa_dinamico.findall(arq)[0][0]] = dic_alfa_dinamico
+
             if padrao_beta_estatico.findall(arq)[0][0]: #pega o beta total estatico
                valor_beta_estatico = padrao_beta_estatico.findall(arq)[0][2]
                dic_beta_estatico[metodo] = float(valor_beta_estatico)
+               dic_todos_processos[padrao_beta_estatico.findall(arq)[0][0]] = dic_beta_estatico
+
             if padrao_beta_dinamico.findall(arq)[0][0]: #pega o beta total dinamico
                valor_beta_dinamico = padrao_beta_dinamico.findall(arq)[0][2]
                dic_beta_dinamico[metodo] = float(valor_beta_dinamico)
+               dic_todos_processos[padrao_beta_dinamico.findall(arq)[0][0]] = dic_beta_dinamico
+
             if padrao_beta_estatico.findall(arq)[1]: #pega o beta vec estatico
-               valor_beta_estatico = padrao_beta_estatico.findall(arq)[1][2]
-               dic_beta_vec_estatico[metodo] = float(valor_beta_estatico)
+               #print(padrao_beta_estatico.findall(arq)[1][0])
+               valor_beta_vec_estatico = padrao_beta_estatico.findall(arq)[1][2]
+               dic_beta_vec_estatico[metodo] = float(valor_beta_vec_estatico)
+               nome_beta_vec_estatico = padrao_beta_estatico.findall(arq)[1][0] + '_VEC_ESTATICO'
+               dic_todos_processos[nome_beta_vec_estatico] = dic_beta_vec_estatico
+
             if padrao_beta_dinamico.findall(arq)[1]: #pega o beta vec dinamico
                valor_beta_vec_dinamico = padrao_beta_dinamico.findall(arq)[1][2]
                dic_beta_vec_dinamico[metodo] = float(valor_beta_vec_dinamico)
+               nome_beta_vec_dinamico = padrao_beta_dinamico.findall(arq)[1][0] + '_VEC_DINAMICO'
+               dic_todos_processos[nome_beta_vec_dinamico] = dic_beta_vec_dinamico
+
             if padrao_beta_estatico.findall(arq)[2]: #pega mibeta vec estatico
                valor_mibeta_vec_estatico = padrao_beta_estatico.findall(arq)[2][2]
                dic_mi_beta_vec_estatico[metodo] = float(valor_mibeta_vec_estatico)
+               nome_mi_beta_vec_estatico = padrao_beta_estatico.findall(arq)[2][0] + '_MI_BETA_VEC_EST'
+               dic_todos_processos[nome_mi_beta_vec_estatico] = dic_mi_beta_vec_estatico
+
             if padrao_beta_dinamico.findall(arq)[2]: #pega mibeta vec dinamico
                valor_mibeta_vec_dinamico = padrao_beta_dinamico.findall(arq)[2][2]
                dic_mi_beta_vec_dinamico[metodo] = float(valor_mibeta_vec_dinamico)
+               nome_mi_beta_vec_dinamico = padrao_beta_dinamico.findall(arq)[2][0] + '_MI_BETA_VEC_DIN'
+               dic_todos_processos[nome_mi_beta_vec_dinamico] = dic_mi_beta_vec_dinamico
+
             if padrao_beta_estatico.findall(arq)[3]: #pega beta vec || estático
                valor_beta_T_estatico =  padrao_beta_estatico.findall(arq)[3][2]
                dic_beta_vec_T_paralelo_estatico[metodo] = float(valor_beta_T_estatico)
+               nome_beta_vec_T_estatico = padrao_beta_estatico.findall(arq)[3][0] + '_BETA_VEC_T_EST'
+               dic_todos_processos[nome_beta_vec_T_estatico] = dic_beta_vec_T_paralelo_estatico
+
             if padrao_beta_dinamico.findall(arq)[3]: #pega beta vec ||  dinâmico
                valor_beta_T_dinamico =  padrao_beta_dinamico.findall(arq)[3][2]
                dic_beta_vec_T_paralelo_dinamico[metodo] = float(valor_beta_T_dinamico)
+               nome_beta_vec_T_dinamico = padrao_beta_dinamico.findall(arq)[3][0] + '_BETA_VEC_T_DIN'
+               dic_todos_processos[nome_beta_vec_T_dinamico] = dic_beta_vec_T_paralelo_dinamico
+
+
             if padrao_gama_estatico.findall(arq)[0]: #pega gama estatico
                valor_gama_estatico = padrao_gama_estatico.findall(arq)[0][2]
                dic_gama_estatico[metodo] = float(valor_gama_estatico)
+               nome_gama_estatico = padrao_gama_estatico.findall(arq)[0][0] + '_ESTATICO'
+               dic_todos_processos[nome_gama_estatico] = dic_gama_estatico
+
             if padrao_gama_dinamico_ww00.findall(arq)[0]: #pega gama médio dinâmico (-w,w,0,0)
                valor_gama_dinamico_ww00 = padrao_gama_dinamico_ww00.findall(arq)[0][2]
                dic_gama_dinamico[metodo] = float(valor_gama_dinamico_ww00)
+               nome_gama_dinamico_ww00 = padrao_gama_dinamico_ww00.findall(arq)[0][0] + '_ww00'
+               dic_todos_processos[nome_gama_dinamico_ww00] = dic_gama_dinamico
+
             if padrao_gama_dinamico_2www0.findall(arq)[0]: #pega gama médio dinâmico (-2w, w, w, 0)
                valor_gama_dinamico_2www0 = padrao_gama_dinamico_2www0.findall(arq)[0][2]
                dic_gama_dinamico_2www0[metodo] = float(valor_gama_dinamico_2www0)
+               nome_gama_dinamico_2www0 = padrao_gama_dinamico_2www0.findall(arq)[0][0]
+               dic_todos_processos[nome_gama_dinamico_2www0] = dic_gama_dinamico_2www0
+
             if padrao_gama_dinamico_ww00.findall(arq)[0]: #pega gama Z-SCAN dinâmico (-w,w,0,0)
                valor_gama_dinamico_Z_SCAN = padrao_gama_dinamico_ww00.findall(arq)[1][2]
                dic_gama_dinamico_Z_SCAN[metodo] = float(valor_gama_dinamico_Z_SCAN)
+               nome_gama_Z_SCAN_dinamico_ww00 = padrao_gama_dinamico_ww00.findall(arq)[0][0] + '_Z_SCAN_ww00'
+               dic_todos_processos[nome_gama_Z_SCAN_dinamico_ww00] = dic_gama_dinamico_Z_SCAN
 
+
+        print(dic_todos_processos)
+        '''
         print(dic_alfa_estatico)
         print(dic_alfa_dinamico)
         print(dic_beta_estatico)
@@ -97,7 +139,7 @@ class MudaDiretorio:
         print(dic_gama_dinamico)
         print(dic_gama_dinamico_Z_SCAN)
         print(dic_gama_dinamico_2www0)
-
+        '''
 
 if __name__ == '__main__':
     caminho = os.getcwd() + '/' + 'Resultados/'
