@@ -274,16 +274,6 @@ class MudaDiretorio:
 
 
 
-
-
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
     caminho = os.getcwd() + '/' + 'Resultados/'
     PATH = os.path.join(caminho)
