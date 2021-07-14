@@ -1,3 +1,5 @@
+from cria_diretorio import CriaDiretorio
+from move_arquivos import MoveArquivos
 import os
 import re
 
@@ -7,7 +9,7 @@ class MudaDiretorio:
         lista_dados = os.listdir(PATH)
 
         #print(lista_dados)
-
+        print(PATH)
         dic_todos_processos = {}
         dic_alfa_estatico = {}
         dic_alfa_dinamico = {}
@@ -123,8 +125,9 @@ class MudaDiretorio:
                dic_todos_processos[nome_gama_Z_SCAN_dinamico_ww00] = dic_gama_dinamico_Z_SCAN
 
 
-        print(dic_todos_processos)
+
         '''
+        print(dic_todos_processos)
         print(dic_alfa_estatico)
         print(dic_alfa_dinamico)
         print(dic_beta_estatico)
@@ -140,6 +143,146 @@ class MudaDiretorio:
         print(dic_gama_dinamico_Z_SCAN)
         print(dic_gama_dinamico_2www0)
         '''
+
+        for processo in dic_todos_processos.keys():
+            if processo == 'Alfa(0;0)':
+                nome_arquivo = 'alfa_estatico.txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_alfa_estatico.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+            if processo == 'Alfa(-w;w)':
+                nome_arquivo = 'alfa_dinamico.txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_alfa_dinamico.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+            if processo == 'Beta(0;0,0)':
+                nome_arquivo = padrao_beta_estatico.findall(arq)[0][0] + '_beta_estatico_total.txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_beta_estatico.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+            if processo == 'Beta(-2w;w,w)':
+                nome_arquivo = padrao_beta_dinamico.findall(arq)[0][0] + '_beta_dinamico.txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_beta_dinamico.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+
+            if processo == 'Beta(0;0,0)_VEC_ESTATICO':
+                nome_arquivo =  'Beta(0;0,0)_VEC_ESTATICO.txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_beta_vec_estatico.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+            if processo == 'Beta(-2w;w,w)_VEC_DINAMICO':
+                nome_arquivo = 'Beta(-2w;w,w)_VEC_DINAMICO.txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_beta_vec_dinamico.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+            if processo == 'Beta(0;0,0)_MI_BETA_VEC_EST':
+                nome_arquivo = 'Beta(0;0,0)_MI_BETA_VEC_EST.txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_mi_beta_vec_estatico.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+            if processo == 'Beta(-2w;w,w)_MI_BETA_VEC_DIN':
+                nome_arquivo = 'Beta(-2w;w,w)_MI_BETA_VEC_DIN.txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_mi_beta_vec_dinamico.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+            if processo == 'Beta(0;0,0)_BETA_VEC_T_EST':
+                nome_arquivo = 'Beta(0;0,0)_BETA_VEC_T_||_EST.txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_beta_vec_T_paralelo_estatico.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+            if processo == 'Beta(-2w;w,w)_BETA_VEC_T_DIN':
+                nome_arquivo = 'Beta(-2w;w,w)_BETA_VEC_T_||_DIN.txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_beta_vec_T_paralelo_dinamico.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+            if processo == 'gama(0;0,0,0)_ESTATICO':
+                nome_arquivo = 'gama(0;0,0,0)_ESTATICO.txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_gama_estatico.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+            if processo == 'gama(-w;w,0,0)_ww00':
+                nome_arquivo = 'gama(-w;w,0,0)_ww00.txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_gama_dinamico.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+            if processo == 'gama(-2w;w,w,0)':
+                nome_arquivo = 'gama(-2w;w,w,0).txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_gama_dinamico_2www0.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+            if processo == 'gama(-w;w,0,0)_Z_SCAN_ww00':
+                nome_arquivo = 'gama(-w;w,0,0)_Z_SCAN_ww00.txt'
+                with open(PATH+nome_arquivo, 'w') as f:
+                    for metodo, valor in sorted(dic_gama_dinamico_Z_SCAN.items()):
+                        f.write('{:<12} {:<27}\n'.format(metodo, round(valor, 5)))
+                novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
+                CriaDiretorio(PATH, novo_diretorio)
+                MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+
+
+
+
+
+
+
+
+
+
+
+
 
 if __name__ == '__main__':
     caminho = os.getcwd() + '/' + 'Resultados/'

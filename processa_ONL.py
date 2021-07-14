@@ -1,15 +1,19 @@
 from cria_tabelas import CriaTabelaDadosONL
 from cria_diretorio import CriaDiretorio
 from move_arquivos import MoveArquivos
+import time
 #from muda_diretorio import MudaDiretorio
 import os
 
 
-caminho = os.getcwd() + '/'
-lista_dados = os.listdir(caminho)
-diretorio_corrente = 'Resultados'
+diretorio_corrente = os.getcwd() + '/'
+arquivos = os.listdir(diretorio_corrente)
+CriaTabelaDadosONL(arquivos)
 
-CriaDiretorio(diretorio_corrente)
-CriaTabelaDadosONL(lista_dados)
-MoveArquivos()
+novos_arquivos = os.listdir(diretorio_corrente)
+
+nome_novo_diretorio = 'Resultados'
+CriaDiretorio(diretorio_corrente, nome_novo_diretorio)
+
+MoveArquivos(diretorio_corrente, nome_novo_diretorio, novos_arquivos)
 #MudaDiretorio(caminho + diretorio_corrente)
