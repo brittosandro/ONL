@@ -1,5 +1,6 @@
 from cria_diretorio import CriaDiretorio
 from move_arquivos import MoveArquivos
+from cria_graficos import CriaGraficos
 import os
 import re
 
@@ -9,7 +10,7 @@ class MudaDiretorio:
         lista_dados = os.listdir(PATH)
 
         #print(lista_dados)
-        print(PATH)
+        #print(PATH)
         dic_todos_processos = {}
         dic_alfa_estatico = {}
         dic_alfa_dinamico = {}
@@ -153,6 +154,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'Alfa(-w;w)':
                 nome_arquivo = 'alfa_dinamico.txt'
@@ -162,6 +164,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'Beta(0;0,0)':
                 nome_arquivo = padrao_beta_estatico.findall(arq)[0][0] + '_beta_estatico_total.txt'
@@ -171,6 +174,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'Beta(-2w;w,w)':
                 nome_arquivo = padrao_beta_dinamico.findall(arq)[0][0] + '_beta_dinamico.txt'
@@ -180,6 +184,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
 
             if processo == 'Beta(0;0,0)_VEC_ESTATICO':
@@ -190,6 +195,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'Beta(-2w;w,w)_VEC_DINAMICO':
                 nome_arquivo = 'Beta(-2w;w,w)_VEC_DINAMICO.txt'
@@ -199,6 +205,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'Beta(0;0,0)_MI_BETA_VEC_EST':
                 nome_arquivo = 'Beta(0;0,0)_MI_BETA_VEC_EST.txt'
@@ -208,6 +215,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'Beta(-2w;w,w)_MI_BETA_VEC_DIN':
                 nome_arquivo = 'Beta(-2w;w,w)_MI_BETA_VEC_DIN.txt'
@@ -217,6 +225,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'Beta(0;0,0)_BETA_VEC_T_EST':
                 nome_arquivo = 'Beta(0;0,0)_BETA_VEC_T_||_EST.txt'
@@ -226,6 +235,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'Beta(-2w;w,w)_BETA_VEC_T_DIN':
                 nome_arquivo = 'Beta(-2w;w,w)_BETA_VEC_T_||_DIN.txt'
@@ -235,6 +245,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'gama(0;0,0,0)_ESTATICO':
                 nome_arquivo = 'gama(0;0,0,0)_ESTATICO.txt'
@@ -244,6 +255,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'gama(-w;w,0,0)_ww00':
                 nome_arquivo = 'gama(-w;w,0,0)_ww00.txt'
@@ -253,6 +265,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'gama(-2w;w,w,0)':
                 nome_arquivo = 'gama(-2w;w,w,0).txt'
@@ -262,6 +275,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'gama(-w;w,0,0)_Z_SCAN_ww00':
                 nome_arquivo = 'gama(-w;w,0,0)_Z_SCAN_ww00.txt'
@@ -271,6 +285,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
 
 
