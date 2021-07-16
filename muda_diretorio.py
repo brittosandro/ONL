@@ -174,7 +174,6 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
-                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'Beta(-2w;w,w)':
                 nome_arquivo = padrao_beta_dinamico.findall(arq)[0][0] + '_beta_dinamico.txt'
@@ -185,7 +184,6 @@ class MudaDiretorio:
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
                 CriaGraficos(PATH, novo_diretorio+nome_arquivo)
-
 
             if processo == 'Beta(0;0,0)_VEC_ESTATICO':
                 nome_arquivo =  'Beta(0;0,0)_VEC_ESTATICO.txt'
@@ -205,7 +203,6 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
-                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'Beta(0;0,0)_MI_BETA_VEC_EST':
                 nome_arquivo = 'Beta(0;0,0)_MI_BETA_VEC_EST.txt'
@@ -255,7 +252,6 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
-                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'gama(-w;w,0,0)_ww00':
                 nome_arquivo = 'gama(-w;w,0,0)_ww00.txt'
@@ -277,6 +273,7 @@ class MudaDiretorio:
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
                 CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
+
             if processo == 'gama(-w;w,0,0)_Z_SCAN_ww00':
                 nome_arquivo = 'gama(-w;w,0,0)_Z_SCAN_ww00.txt'
                 with open(PATH+nome_arquivo, 'w') as f:
@@ -286,7 +283,7 @@ class MudaDiretorio:
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
                 CriaGraficos(PATH, novo_diretorio+nome_arquivo)
-
+                
 
 
 if __name__ == '__main__':
