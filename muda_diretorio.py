@@ -203,6 +203,7 @@ class MudaDiretorio:
                 novo_diretorio = nome_arquivo.replace('.txt', '') + '/'
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
+                CriaGraficos(PATH, novo_diretorio+nome_arquivo)
 
             if processo == 'Beta(0;0,0)_MI_BETA_VEC_EST':
                 nome_arquivo = 'Beta(0;0,0)_MI_BETA_VEC_EST.txt'
@@ -283,7 +284,7 @@ class MudaDiretorio:
                 CriaDiretorio(PATH, novo_diretorio)
                 MoveArquivos(PATH, novo_diretorio, nome_arquivo)
                 CriaGraficos(PATH, novo_diretorio+nome_arquivo)
-                
+
 
 
 if __name__ == '__main__':
