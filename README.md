@@ -40,6 +40,6 @@ e calcula vários processos ONL.
      ```
      gama(-w;w,0,0) 
      ```
-- Para usar esse script, remova os arquivos *.log do repositório e execute o arquivo processa.py.
+- Para usar esse script, remova os arquivos *.log do repositório, adicione seus *.log e execute o arquivo processa.py.
 
 - Após executar o arquivo processa.py será gerado um novo diretório chamado de Resultados com arquivos *.dat e alguns gráficos. 
