@@ -7,12 +7,12 @@ import os
 
 diretorio_corrente = os.getcwd() + '/'
 arquivos = os.listdir(diretorio_corrente)
+
+# No diretório corrente só há arquivos *.log
 CriaTabelaDadosONL(arquivos)
 
 novos_arquivos = os.listdir(diretorio_corrente)
-
-nome_novo_diretorio = 'Resultados/'
-CriaDiretorio(diretorio_corrente, nome_novo_diretorio)
-
-MoveArquivos(diretorio_corrente, nome_novo_diretorio, novos_arquivos)
-MudaDiretorio(diretorio_corrente + nome_novo_diretorio)
+novo_diretorio = 'Resultados/'
+CriaDiretorio(diretorio_corrente, novo_diretorio)
+MoveArquivos(diretorio_corrente, novo_diretorio, novos_arquivos)
+MudaDiretorio(diretorio_corrente + novo_diretorio)
